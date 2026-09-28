@@ -241,6 +241,8 @@ Examples are available in the [examples](examples/) folder:
 - [CSV report](examples/diskExport/CSV/diskExport-2026-09-25_19-39-31.csv): an example of the exported disk information.
 - [Log file](examples/diskExport/Log/log-2026-09-25_19-39-31.log): an example of the messages recorded during execution.
 
+**Privacy note:** In the example output, network interface IP addresses and DNS server IP addresses have been replaced with placeholders to avoid exposing actual network details. The script reports the real values when run.
+
 ## Error handling and limitations
 
 - Failed queries are logged, and processing continues with the next system. A report can therefore contain only a subset of the requested systems; failed hosts do not receive placeholder rows.
