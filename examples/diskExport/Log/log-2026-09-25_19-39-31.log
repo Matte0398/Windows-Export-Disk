@@ -1,0 +1,7 @@
+﻿2026-09-25 19:39:31 [INFO] Starting disk export using systems file 'C:\temp\system.txt'.
+2026-09-25 19:39:31 [INFO] Retrieving fixed disks (DriveType = 3) from 'host1' (<IP1>).
+2026-09-25 19:39:42 [INFO] Retrieving fixed disks (DriveType = 3) from 'host2' (<IP2>).
+2026-09-25 19:39:45 [ERROR] Unable to retrieve disk information from 'host2' (<IP2>): Connessione al server remoto <IP2> non riuscita con il seguente messaggio di errore: Client Gestione remota Windows: impossibile elaborare la richiesta. Se lo schema di autenticazione è diverso da Kerberos o il computer client non fa parte di un dominio, è necessario utilizzare il trasporto HTTPS oppure aggiungere il computer di destinazione all'impostazione di configurazione TrustedHosts. Per configurare TrustedHosts, utilizzare winrm.cmd. Si noti che i computer inclusi nell'elenco TrustedHosts potrebbero non essere autenticati. Per ulteriori informazioni, eseguire il comando seguente: winrm help config. Per ulteriori informazioni, vedere l'argomento della Guida about_Remote_Troubleshooting.
+2026-09-25 19:39:45 [INFO] Retrieving fixed disks (DriveType = 3) from 'localhost' (127.0.0.1).
+2026-09-25 19:39:45 [INFO] CSV report created: 'C:\temp\diskExport\CSV\diskExport-2026-09-25_19-39-31.csv'.
+2026-09-28 19:39:13 [INFO] CSV report copied to '<IP3>':'C:\temp'.

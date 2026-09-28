@@ -1,0 +1,3 @@
+﻿"System","IP address","Disk","Description","Filesystem","TotalSpace(GB)","UsedSpace(GB)","FreeSpace(GB)"
+"host1","<IP1>","C:","Disco rigido locale","NTFS","49,34","19,83","29,51"
+"localhost","127.0.0.1","C:","Disco rigido locale","NTFS","62,9","29,38","33,52"
