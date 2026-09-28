@@ -103,7 +103,7 @@ Create `C:\temp` if needed, then save the following entry in `C:\temp\system.txt
 host2,<IP2>
 ```
 
-From the script directory, reuse the credential tested above:
+From the program directory, reuse the credential tested above:
 
 ```powershell
 .\exportDiskInfo.ps1 -SystemList 'C:\temp\system.txt' -Credential $cred
@@ -181,7 +181,7 @@ $cred = Get-Credential
 .\exportDiskInfo.ps1 -SystemList 'C:\operations\servers.txt' -PathExport 'C:\operations\diskExport' -RemoteHost '<IP3>' -RemotePath 'D:\reports\disks' -Credential $cred
 ```
 
-`-RemoteHost` and `-RemotePath` must be supplied together. The destination must be an existing directory specified as an absolute drive path, such as `C:\temp` or `D:\reports\disks`. The local CSV is retained after copying. If the destination host is recognized as local, the script performs a local copy.
+`-RemoteHost` and `-RemotePath` must be supplied together. The destination must be an existing directory specified as an absolute drive path, such as `C:\temp` or `D:\reports\disks`. The local CSV is retained after copying. If the destination host is recognized as local, the program performs a local copy.
 
 Remote delivery connects using the exact name or IP passed to `-RemoteHost`. In a workgroup, ensure that value is also in TrustedHosts on the source VM. Authorizing an IP for disk queries does not automatically authorize a hostname used for report delivery.
 
@@ -241,7 +241,7 @@ Examples are available in the [examples](examples/) folder:
 - [CSV report](examples/diskExport/CSV/diskExport-2026-09-25_19-39-31.csv): an example of the exported disk information.
 - [Log file](examples/diskExport/Log/log-2026-09-25_19-39-31.log): an example of the messages recorded during execution.
 
-**Privacy note:** In the example output, network interface IP addresses and DNS server IP addresses have been replaced with placeholders to avoid exposing actual network details. The script reports the real values when run.
+**Privacy note:** In the example output, the IP addresses have been replaced with placeholders to avoid exposing actual network details. The program reports the real values when run.
 
 ## Error handling and limitations
 
@@ -253,18 +253,18 @@ Examples are available in the [examples](examples/) folder:
 
 ## Troubleshooting
 
-| Problem                                            | What to check                                                                                                 |
-| -------------------------------------------------- | ------------------------------------------------------------------------------------------------------------- |
-| System list is missing or empty                    | Create the file and add valid entries, or select the correct path with `-SystemList`                          |
-| An entry is skipped                                | Use exactly `hostname,IP address`, with a valid IPv4 or IPv6 address                                          |
-| Remote disk query fails                            | Check the IP in the second field, WinRM configuration, network access, credentials, and remoting permissions  |
-| `ServerNotTrusted` or a TrustedHosts error         | Add the target IP to TrustedHosts on the source VM. A hostname entry does not cover a connection by IP.       |
-| `Set-Item WSMan:\localhost\...` cannot connect     | Check the WinRM service on the source VM with `Get-Service WinRM`; start it and retry.                        |
-| Direct `Invoke-Command` works but the script fails | Test with the same target IP, credentials, and source VM as the script.                                       |
-| No prompt with `-AskAlwaysCred`                    | Check whether entries are recognized as local, skipped as invalid, or processing stops before a remote query. |
-| Script name is not recognized                      | Check `Get-Location`, the filename, and whether the path should begin with `.\` or `..\`.                     |
-| No CSV is created                                  | Inspect the log for failed queries, invalid entries, or systems returning no fixed disks                      |
-| Report contains fewer systems than expected        | Check the log for individual query failures and skipped rows                                                  |
-| Destination path is rejected                       | Supply both destination parameters and use an absolute drive path to an existing directory                    |
-| Remote report copy fails                           | Check destination remoting access, credentials, directory existence, and write permissions                    |
-| Output or log creation fails                       | Check local directory permissions and available disk space                                                    |
+| Problem                                             | What to check                                                                                                 |
+| --------------------------------------------------- | ------------------------------------------------------------------------------------------------------------- |
+| System list is missing or empty                     | Create the file and add valid entries, or select the correct path with `-SystemList`                          |
+| An entry is skipped                                 | Use exactly `hostname,IP address`, with a valid IPv4 or IPv6 address                                          |
+| Remote disk query fails                             | Check the IP in the second field, WinRM configuration, network access, credentials, and remoting permissions  |
+| `ServerNotTrusted` or a TrustedHosts error          | Add the target IP to TrustedHosts on the source VM. A hostname entry does not cover a connection by IP.       |
+| `Set-Item WSMan:\localhost\...` cannot connect      | Check the WinRM service on the source VM with `Get-Service WinRM`; start it and retry.                        |
+| Direct `Invoke-Command` works but the program fails | Test with the same target IP, credentials, and source VM as the program.                                      |
+| No prompt with `-AskAlwaysCred`                     | Check whether entries are recognized as local, skipped as invalid, or processing stops before a remote query. |
+| Program name is not recognized                      | Check `Get-Location`, the filename, and whether the path should begin with `.\` or `..\`.                     |
+| No CSV is created                                   | Inspect the log for failed queries, invalid entries, or systems returning no fixed disks                      |
+| Report contains fewer systems than expected         | Check the log for individual query failures and skipped rows                                                  |
+| Destination path is rejected                        | Supply both destination parameters and use an absolute drive path to an existing directory                    |
+| Remote report copy fails                            | Check destination remoting access, credentials, directory existence, and write permissions                    |
+| Output or log creation fails                        | Check local directory permissions and available disk space                                                    |
