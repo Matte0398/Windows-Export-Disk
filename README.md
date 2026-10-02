@@ -1,4 +1,4 @@
-# Get Windows Disk Info
+# Windows Disk Info
 
 The program collects fixed logical disk information from one or more Windows computers and exports a CSV report containing total, used, and free space. It supports local queries, remote queries through PowerShell Remoting, and an optional copy of the completed report to another Windows computer.
 
