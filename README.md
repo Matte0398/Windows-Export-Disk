@@ -106,13 +106,13 @@ host2,<IP2>
 From the program directory, reuse the credential tested above:
 
 ```powershell
-.\exportDiskInfo.ps1 -SystemList 'C:\temp\system.txt' -Credential $cred
+.\Get-WindowsDiskInfo.ps1 -SystemList 'C:\temp\system.txt' -Credential $cred
 ```
 
 Or request credentials separately for each remote system:
 
 ```powershell
-.\exportDiskInfo.ps1 -SystemList 'C:\temp\system.txt' -AskAlwaysCred
+.\Get-WindowsDiskInfo.ps1 -SystemList 'C:\temp\system.txt' -AskAlwaysCred
 ```
 
 Reports and logs are saved on the source VM. `-RemoteHost` and `-RemotePath` are only needed to copy the completed report elsewhere; the systems to query come from `system.txt`.
@@ -130,13 +130,13 @@ Get-Location
 Get-ChildItem -Path . -Filter *.ps1
 
 # Program in the current directory
-.\exportDiskInfo.ps1 -AskAlwaysCred
+.\Get-WindowsDiskInfo.ps1 -AskAlwaysCred
 
 # Program in the parent directory
-..\exportDiskInfo.ps1 -AskAlwaysCred
+..\Get-WindowsDiskInfo.ps1 -AskAlwaysCred
 
 # Absolute path (replace it with the actual program location)
-& 'C:\scripts\exportDiskInfo.ps1' -AskAlwaysCred
+& 'C:\scripts\Get-WindowsDiskInfo.ps1' -AskAlwaysCred
 ```
 
 These are alternative ways to launch the same program. `..\` means the parent of the current working directory.
@@ -144,7 +144,7 @@ These are alternative ways to launch the same program. `..\` means the parent of
 ### Export using the default paths
 
 ```powershell
-.\exportDiskInfo.ps1
+.\Get-WindowsDiskInfo.ps1
 ```
 
 This reads `C:\temp\system.txt` and writes the report and log under `C:\temp\diskExport`. Missing local output directories are created automatically.
@@ -152,33 +152,33 @@ This reads `C:\temp\system.txt` and writes the report and log under `C:\temp\dis
 ### Use custom input and output paths
 
 ```powershell
-.\exportDiskInfo.ps1 -SystemList 'C:\operations\servers.txt' -PathExport 'D:\reports\disks'
+.\Get-WindowsDiskInfo.ps1 -SystemList 'C:\operations\servers.txt' -PathExport 'D:\reports\disks'
 ```
 
 ### Supply credentials explicitly
 
 ```powershell
 $cred = Get-Credential
-.\exportDiskInfo.ps1 -Credential $cred
+.\Get-WindowsDiskInfo.ps1 -Credential $cred
 ```
 
 ### Prompt separately for each remote computer
 
 ```powershell
-.\exportDiskInfo.ps1 -AskAlwaysCred
+.\Get-WindowsDiskInfo.ps1 -AskAlwaysCred
 ```
 
 ### Copy the completed report to another computer
 
 ```powershell
-.\exportDiskInfo.ps1 -H '<IP3>' -P 'D:\reports\disks'
+.\Get-WindowsDiskInfo.ps1 -H '<IP3>' -P 'D:\reports\disks'
 ```
 
 Or combine explicit credentials with custom paths:
 
 ```powershell
 $cred = Get-Credential
-.\exportDiskInfo.ps1 -SystemList 'C:\operations\servers.txt' -PathExport 'C:\operations\diskExport' -RemoteHost '<IP3>' -RemotePath 'D:\reports\disks' -Credential $cred
+.\Get-WindowsDiskInfo.ps1 -SystemList 'C:\operations\servers.txt' -PathExport 'C:\operations\diskExport' -RemoteHost '<IP3>' -RemotePath 'D:\reports\disks' -Credential $cred
 ```
 
 `-RemoteHost` and `-RemotePath` must be supplied together. The destination must be an existing directory specified as an absolute drive path, such as `C:\temp` or `D:\reports\disks`. The local CSV is retained after copying. If the destination host is recognized as local, the program performs a local copy.
